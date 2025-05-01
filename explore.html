@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Forests - GeoInSight</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        footer {
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">GeoInSight</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="index.html#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="pets" id="pets">
+        <h2>Explore Forests</h2>
+        <div class="pet-grid">
+            <div class="pet-card">
+                <div class="image-container">
+                    <div class="image-wrapper" id="image-wrapper">
+                        <img id="zoomable-image" src="closer look.png" alt="Agusan del Norte Forest Map">
+                    </div>
+                    <div class="zoom-controls">
+                        <button onclick="zoomIn()">+</button>
+                        <button onclick="resetZoom()">Reset</button>
+                        <button onclick="zoomOut()">-</button>
+                    </div>
+                </div>
+                <h3>Agusan del Norte</h3>
+                <p>Forest Monitoring Area</p>
+                <p class="map-legend">Deforestation Timeline: 1995-2024</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 GeoInSight. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let scale = 1;
+        let isDragging = false;
+        let startX, startY, translateX = 0, translateY = 0;
+        const wrapper = document.getElementById('image-wrapper');
+        const image = document.getElementById('zoomable-image');
+        
+        function zoomIn() {
+            scale = Math.min(scale + 0.3, 5);
+            updateZoom();
+        }
+        
+        function zoomOut() {
+            if (scale > 1) {
+                scale = Math.max(scale - 0.3, 1);
+                if (scale === 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+            }
+            updateZoom();
+        }
+        
+        function resetZoom() {
+            scale = 1;
+            translateX = 0;
+            translateY = 0;
+            updateZoom();
+        }
+        
+        function updateZoom() {
+            wrapper.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+
+        wrapper.addEventListener('mousedown', startDragging);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', stopDragging);
+        wrapper.addEventListener('touchstart', e => {
+            const touch = e.touches[0];
+            startDragging(touch);
+        });
+        document.addEventListener('touchmove', e => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            drag(touch);
+        });
+        document.addEventListener('touchend', stopDragging);
+
+        function startDragging(e) {
+            if (scale > 1) {
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                wrapper.style.cursor = 'grabbing';
+            }
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.clientX - startX;
+            const y = e.clientY - startY;
+            
+            const maxTranslate = (scale - 1) * 300;
+            translateX = Math.min(Math.max(x, -maxTranslate), maxTranslate);
+            translateY = Math.min(Math.max(y, -maxTranslate), maxTranslate);
+            
+            updateZoom();
+        }
+
+        function stopDragging() {
+            isDragging = false;
+            wrapper.style.cursor = scale > 1 ? 'grab' : 'default';
+        }
+
+        wrapper.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            if (e.deltaY < 0) {
+                zoomIn();
+            } else {
+                zoomOut();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -76,8 +76,33 @@
   
       <!-- Second Card: Static Image Map -->
       <div class="pet-card">
-        <img src="map.jpg" alt="Static Map Overview" style="width: 100%; border-radius: 8px; border: 1px solid #ccc;" />
-        <p>This image provides an overview of the forest cover in Agusan del Norte.</p>
+        <img src="map_full.png" alt="Static Map Overview" style="width: 100%; border-radius: 8px; border: 1px solid #ccc;" />
+      </div>
+
+      <!-- Third Card: Static Image Map -->
+      <div class="pet-card">
+        <img src="map1.png" alt="Static Map Overview" style="width: 100%; border-radius: 8px; border: 1px solid #ccc;" />
+      </div>
+
+      <!-- Fourth Card: Texts -->
+      <div class="pet-card" style="text-align: justify;">
+       <h3>Map Information </h3>
+        <p>This map visualizes forest health changes in the Caraga region between 2015 and 2023 
+        using NDVI (Normalized Difference Vegetation Index), a remote sensing method for measuring 
+        vegetation density. What you see here is a side-by-side NDVI comparison between 2015 and 2023. 
+        The red areas experienced a significant drop in vegetation, likely due to deforestation or land use change. 
+        This data is from the <b>European Space Agency (ESA)</b>, specifically, Sentinel-2 satellite imagery, 
+        processed using NDVI in Google Earth Engine and visualized in QGIS.</p>
+
+        <h3>Color Interpretation:</h3>
+        <p><b>Red to orange areas:</b> Strong decrease in NDVI → likely deforestation, land clearing, or degradation.</p>
+        <p><b>White to yellow:</b> No major change in vegetation cover.</p>
+        <p><b>Light green to dark blue areas:</b> Increase in NDVI → possibly forest regrowth, afforestation, or agricultural expansion.</p>
+
+        <h3>What is NDVI, and Why It Matters</h3>
+        <p>NDVI measures greenness using satellite imagery — values range from -1 to +1. Healthy forests have high NDVI 
+        (~+0.6 to +0.8), while bare soil or urban areas are low or negative. By subtracting NDVI from 2015 and 2023, 
+        we isolate areas that lost or gained vegetation. </p>
       </div>
   
     </div>

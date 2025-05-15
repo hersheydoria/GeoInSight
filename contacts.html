@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - GeoInSight</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .hero {
+      background: 
+        linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
+        url('bg.png') center/cover no-repeat;
+      padding: 150px 20px;
+      text-align: center;
+      color: #000;
+      animation: fadeInHero 1.2s ease-in-out;
+    }
+
+    .contact-section {
+      background-color: rgb(220, 235, 220);
+      border-radius: 20px;
+      padding: 30px;
+      width: 90%;
+      max-width: 800px;
+      margin: 80px auto 100px auto;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      color: #1a4d0f;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-size: 42px;
+      margin-bottom: 40px;
+      color: #1a4d0f;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .contact-section form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-section input,
+    .contact-section textarea {
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      background-color: rgb(210, 225, 210);
+      color: #1a4d0f;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .contact-section input::placeholder,
+    .contact-section textarea::placeholder {
+      color: #2e6e1e;
+    }
+
+    .contact-section textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .contact-section button {
+      padding: 15px;
+      background-color: #1a4d0f;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-section button:hover {
+      background-color: #276d1c;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      background-color: #19460f;
+      color: white;
+      padding: 25px;
+      margin-top: 60px;
+      font-size: 16px;
+    }
+
+    @keyframes fadeInHero {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">GeoInSight</div>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>CONTACT US</h1><br>
+      <p>Let’s work together to protect our forests</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <h2>Get In Touch</h2>
+    <form action="#" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="subject" placeholder="Subject" />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 GeoInSight. All rights reserved.</p>
+  </footer>
+</body>
+</html>
